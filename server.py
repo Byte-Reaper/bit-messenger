@@ -6,7 +6,7 @@ sock = s.socket(s.AF_INET, s.SOCK_STREAM)
 sock.setblocking(0)
 
 addr = (s.gethostbyname(s.gethostname()), 666)
-addr = ('localhost', 666)
+#addr = ('localhost', 666) #for testing only
 print('hosting on {}:{}'.format(*addr))
 sock.bind(addr)
 
