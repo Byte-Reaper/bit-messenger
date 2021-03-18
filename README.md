@@ -1,6 +1,6 @@
 # bit-messenger
 
-Bit messenger is an encrypted chat system. For example: you run a server on your pc and allow your friends to connect to it. You connect with the client to your own server and choose a username. When the program asks 'are you the host y/n: ' you respond 'y', the client displays a code b'.........'. you share that code with your friends and they don't enter host-mode. They fill in the code and ... you can chat with your friends!
+Bit messenger is an encrypted chat system. For example: you run a server on your pc and allow your friends to connect to it. You connect with the client to your own server and choose a username. When the program asks 'are you the host y/n: ' you respond 'y', the client displays a code 'SOmErANdoMChArS='. you share that code with your friends and they don't enter host-mode. They fill in the code ('SOmErANdoMChArS=') and ... you can chat with your friends!
 
 # SERVER setup
 
