@@ -17,16 +17,15 @@ OUTPUT = []
 message_queues = {}
 
 while INPUT:
-    print('<SERVER EVENT> waiting for new connection or new message')
     read, write, exce = select(INPUT, OUTPUT, INPUT)
-    print(OUTPUT)
+    
     if len(read):
         print('<SERVER EVENT> checking inputs')
     for socket in read:
         if socket == sock:
             client, address = socket.accept()
             INPUT.append(client)
-            #OUTPUT.append(client)
+            
             print(f'<CONNECTION EVENT> new connection from {address[0]} ({address[1]})')
             message_queues[client] = queue()
         
@@ -52,21 +51,17 @@ while INPUT:
                     if client == socket or client == sock:
                         continue
                     if not (client in OUTPUT):
-                        print(f'added {client} to output')
                         OUTPUT.append(client)
                     message_queues[client].put(data)
     if len(write):
         print('<SERVER EVENT> checking outputs')
     for socket in write:
         address = socket.getpeername()
-        print(socket)
         try:
-            print(message_queues[socket].queue)
             data = message_queues[socket].get_nowait()
             socket.send(data)
             print(f'<MESSAGE EVENT> sent {data} to {address[0]} ({address[1]})')
         except empty as e:
-            print(e)
             print(f'<MESSAGE EVENT> removed {address[0]} ({address[1]}) from outputs')
             OUTPUT.remove(socket)
 
